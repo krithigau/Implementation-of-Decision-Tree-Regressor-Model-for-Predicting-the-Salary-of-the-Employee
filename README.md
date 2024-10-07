@@ -54,14 +54,17 @@ plt.show()
 
 ![image](https://github.com/user-attachments/assets/704e5cb7-0ded-461e-8724-97a729810f29)
 
+
 ##NULL & COUNT:
 
 ![image](https://github.com/user-attachments/assets/76def074-91c4-4ad5-aa13-c568507e5211)
 ![image](https://github.com/user-attachments/assets/80eefd9a-355f-4489-8445-eabdd154b60d)
 
+
 ##ACCURACY SCORE:
 
 ![image](https://github.com/user-attachments/assets/b50cc95a-cbbc-4a67-9c58-5e22717dede7)
+
 
 ##DECISION TREE CLASSIFIER MODEL:
 
