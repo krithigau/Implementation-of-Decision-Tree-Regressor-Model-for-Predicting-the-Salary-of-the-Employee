@@ -20,67 +20,53 @@ To write a program to implement the Decision Tree Regressor Model for Predicting
 ```
 /*
 Program to implement the Decision Tree Regressor Model for Predicting the Salary of the Employee.
-Developed by: Krithiga U
+Developed by:Krithiga U
 RegisterNumber:  212223240076
 */
 import pandas as pd
-data = pd.read_csv("Employee.csv")
+from sklearn.tree import  plot_tree
+data=pd.read_csv("/content/Salary.csv")
 data.head()
 data.info()
-
 data.isnull().sum()
-
-data["left"].value_counts
-
 from sklearn.preprocessing import LabelEncoder
-le= LabelEncoder()
-data["salary"]=le.fit_transform(data["salary"])
+le=LabelEncoder()
+data["Position"]=le.fit_transform(data["Position"])
 data.head()
-
-x= data[["satisfaction_level","last_evaluation","number_project","average_montly_hours","time_spend_company","Work_accident","promotion_last_5years","salary"]]
-
-x.head()
-y=data["left"]
-
+x=data[["Position","Level"]]
+y=data["Salary"]
 from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state = 100)
-
-from sklearn.tree import DecisionTreeClassifier
-dt = DecisionTreeClassifier(criterion="entropy")
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=2)
+from sklearn.tree import DecisionTreeRegressor
+dt=DecisionTreeRegressor()
 dt.fit(x_train,y_train)
-
-y_pred = dt.predict(x_test)
+y_pred=dt.predict(x_test)
 from sklearn import metrics
-
-accuracy = metrics.accuracy_score(y_test,y_pred)
-accuracy
-
-dt.predict([[0.5,0.8,9,260,6,0,1,2]])
+mse=metrics.mean_squared_error(y_test,y_pred)
+mse
+r2=metrics.r2_score(y_test,y_pred)
+r2
+dt.predict([[5,6]])
+plt.figure(figsize=(20,8))
+plot_tree(dt,feature_names=x.columns,filled=True)
+plt.show()
 ```
 ## Output:
-HEAD() & INFO() & NULL():
+HEAD():
 
-![image](https://github.com/user-attachments/assets/5480d2eb-7f7b-434a-b74f-aff2e2917629)
+![image](https://github.com/user-attachments/assets/70ed46a0-a60d-4669-9320-704ccc40d74e)
 
-![image](https://github.com/user-attachments/assets/32ae86e5-5168-49ce-acbf-72232f8b26fa)
+Mean Squared Error:
 
-![image](https://github.com/user-attachments/assets/468ba664-b7f0-4d9c-ae66-27599504fa69)
+![image](https://github.com/user-attachments/assets/7dfd4916-4e5f-47de-8798-9c1423866f63)
 
-data.value_counts()
+Predicted Value:
 
-![image](https://github.com/user-attachments/assets/804f3fa7-bd8e-4322-bce0-ce9edf1bb4fd)
+![image](https://github.com/user-attachments/assets/3ad0ec1b-81e7-4242-903c-e41b262685fa)
 
-x.head()
+Decision Tree:
 
-![image](https://github.com/user-attachments/assets/f17257b3-4708-4d7f-bab0-2cc755df785c)
-
-accuracy:
-
-![image](https://github.com/user-attachments/assets/d7936122-9dc6-47e6-bfc5-e0005dcaae1b)
-
-Prediction:
-
-![image](https://github.com/user-attachments/assets/39a42532-b090-45c1-be2f-d7c6511be96d)
+![image](https://github.com/user-attachments/assets/125914bb-1336-4949-b4af-0d5228d49e2e)
 
 ## Result:
 Thus the program to implement the Decision Tree Regressor Model for Predicting the Salary of the Employee is written and verified using python programming.
